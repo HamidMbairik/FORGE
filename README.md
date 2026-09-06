@@ -1,70 +1,58 @@
-# FORGE — Creative Digital Agency
+# FORGE
 
-**Brand personality:** Bold, experimental, creative, unconventional.
+Landing page for a fictional creative digital agency. Built as a portfolio piece.
 
-## Design System
+React, Vite, hand-crafted CSS. No UI framework — the colour palette comes from the FORGE brand system.
 
-| Token | HEX | RGB |
-|---|---|---|
-| Primary | `#111111` | `rgb(17, 17, 17)` |
-| Secondary | `#242424` | `rgb(36, 36, 36)` |
-| Background | `#F2F0EA` | `rgb(242, 240, 234)` |
-| Surface | `#E4E1D9` | `rgb(228, 225, 217)` |
-| Text | `#111111` | `rgb(17, 17, 17)` |
-| Muted Text | `#696762` | `rgb(105, 103, 98)` |
-| Accent | `#FF4D00` | `rgb(255, 77, 0)` |
-| Accent Light | `#FFB199` | `rgb(255, 177, 153)` |
+Live site: **https://forge-six-kohl.vercel.app/**
 
-## Usage Rules
+## Screenshots
 
-- Black and off-white should dominate.
-- Orange should be bold and intentional—use it for interactive elements, hover states, CTAs and creative visual moments.
-- **60%** Background/neutral · **30%** Primary/Secondary · **10%** Accent.
+![Hero](screenshots/hero.png)
 
-## Stack
+![Work](screenshots/work.png)
 
-Built with **React (Vite)**. No UI framework — everything is hand-crafted CSS with an experimental, editorial feel.
+![Services](screenshots/services.png)
 
-## Getting Started
+![Studio](screenshots/studio.png)
 
-```bash
+![Contact](screenshots/contact.png)
+
+## Run it
+
+```sh
 npm install
-npm run dev      # start dev server
-npm run build    # production build → dist/
-npm run lint     # oxlint
+npm run dev
 ```
 
-> Live URL: http://localhost:5173
-
-## Brand Mark
-
-The FORGE emblem is an "F" being forged over a rising flame on a dark hearth — fire, force and typography in one mark. It lives as an animated SVG component (`src/components/Logo.jsx`), used in the nav, footer and favicon. On hover the flame flickers, glows and throws sparks.
+Build for production with `npm run build` (`dist/`), preview with `npm run preview`.
 
 ## Structure
 
-```
-├── index.html              # entry + fonts (Space Grotesk, Inter, Archivo Black)
-├── public/
-│   ├── favicon.svg         # FORGE logo mark
-│   └── images/             # real project + studio photography
-└── src/
-    ├── main.jsx            # React root
-    ├── App.jsx             # page assembly (loader, cursor, nav, sections)
-    ├── index.css           # design-token system + global styles
-    ├── styles/             # per-component CSS
-    ├── components/         # Navbar, Hero, Work, Services, Studio, Contact, Footer, Loader, Logo
-    ├── hooks/              # useReveal (scroll animations), useMouseTrail (custom cursor)
-    └── data/content.js     # projects (with imagery), services, nav links, stats
-```
+- `src/data/content.js` — all the copy (projects, services, nav links, stats). Editing text is a one-file job.
+- `src/components/` — one component per section, plus the `Logo` emblem and `Loader`.
+- `src/styles/` — one CSS file per component; `src/index.css` holds the design tokens and shared bits.
+- `src/hooks/useEffects.js` — the two small pieces that make it move: scroll reveal and the custom cursor.
 
-## Design & Interactions
+## Palette
 
-- Custom cursor (dot + trailing ring with mix-blend-mode)
-- Film-grain overlay + letterpress-style poster text
-- Intro loader with per-letter reveal (orange "O" as the forge flame)
-- Mouse-reactive 3D headline (`perspective` tilt)
-- Rotating orbital core with animated stamp (BOLD / EXPERIMENTAL / CREATIVE / UNCONVENTIONAL)
-- Tilt-on-hover work tiles over real photography, with live duotone preview rail
-- Services accordion with spring-reveal body
-- Sticky section titles, manifesto marquees, halftone/dotted textures
-- Fully responsive + `prefers-reduced-motion` respected
+Defined once as CSS variables in `src/index.css` and referenced everywhere. No stray hex values.
+
+| Role | Hex |
+|---|---|
+| Primary | `#111111` |
+| Secondary | `#242424` |
+| Background | `#F2F0EA` |
+| Surface | `#E4E1D9` |
+| Text | `#111111` |
+| Muted | `#696762` |
+| Accent | `#FF4D00` |
+| Accent light | `#FFB199` |
+
+## Known rough edges
+
+- Images are hotlinks-turned-local downloads from Unsplash. I couldn't preview them visually, so they're matched by subject (vinyl → music label, circuit board → fintech, etc.) — worth a second look and easy swaps before deploying anywhere serious.
+- The loader blocks the page for ~1.7s with fake progress. It's purely cosmetic drama; nothing actually loads that long.
+- The custom cursor is `mix-blend-mode: difference` and hides itself on touch devices, but won't match your OS cursor size — some people find that annoying.
+- Privacy: `dist/` is gitignored, so no build output is under version control.
+- The contact form / social links go nowhere real yet — the mailto is the only live action.
