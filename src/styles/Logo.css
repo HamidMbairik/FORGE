@@ -1,0 +1,91 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.logo-emblem {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+}
+
+.logo-word {
+  font-family: var(--font-black);
+  font-size: 1.35rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.logo-dot {
+  color: var(--accent);
+}
+
+/* hover life: flame flickers + sparks fly */
+.logo:hover .forge-flame {
+  animation: flicker 1.1s ease-in-out infinite;
+}
+
+.logo:hover .forge-glow {
+  animation: glow-pulse 1.1s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+.logo:hover .forge-spark {
+  animation: spark 1.1s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.forge-spark.s1 {
+  --sx: 9px;
+  --sy: -9px;
+}
+
+.forge-spark.s2 {
+  --sx: 7px;
+  --sy: 6px;
+}
+
+.forge-spark.s3 {
+  --sx: -8px;
+  --sy: -4px;
+}
+
+.logo:hover .forge-spark.s2 {
+  animation-delay: 0.22s;
+}
+
+.logo:hover .forge-spark.s3 {
+  animation-delay: 0.44s;
+}
+
+@keyframes flicker {
+  0%, 100% { transform: scale(1) translateY(0); }
+  25% { transform: scale(1.04, 1.07) translateY(-1px); }
+  50% { transform: scale(0.97, 0.94) translateY(0.5px); }
+  75% { transform: scale(1.03, 1.05) translateY(-0.5px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.45; }
+}
+
+@keyframes spark {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translate(var(--sx, 4px), var(--sy, -6px)) scale(0.4); opacity: 0; }
+}
+
+.logo-compact .logo-emblem {
+  width: 38px;
+  height: 38px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo:hover .forge-flame,
+  .logo:hover .forge-glow,
+  .logo:hover .forge-spark {
+    animation: none;
+  }
+}

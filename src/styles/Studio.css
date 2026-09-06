@@ -1,0 +1,219 @@
+.studio {
+  background: var(--background);
+}
+
+.studio-marquee {
+  margin: 0 0 5rem;
+  transform: rotate(0.8deg);
+}
+
+.studio-marquee .marquee-track {
+  animation-duration: 16s;
+}
+
+.studio-intro {
+  max-width: 1000px;
+  margin-bottom: 5rem;
+}
+
+.studio-statement {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 3.4vw, 2.3rem);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.studio-statement em {
+  font-style: normal;
+  color: var(--accent);
+  border-bottom: 2px dashed var(--accent);
+}
+
+.stat-accent {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent);
+}
+
+.studio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* collage */
+.studio-collage {
+  position: relative;
+  aspect-ratio: 1;
+  max-width: 480px;
+}
+
+.collage-block {
+  position: absolute;
+  border-radius: var(--radius);
+  transition: transform 0.6s var(--ease);
+}
+
+.block-a {
+  width: 58%;
+  height: 58%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--background);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-black);
+  font-size: 7rem;
+  z-index: 2;
+  box-shadow: 12px 12px 0 var(--accent);
+}
+
+.block-b {
+  width: 42%;
+  height: 42%;
+  bottom: 0;
+  right: 0;
+  background: var(--accent);
+  z-index: 3;
+  overflow: hidden;
+  border: 3px solid var(--primary);
+}
+
+.block-b img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85) contrast(1.08);
+  transform: scale(1.05);
+  transition: transform 0.6s var(--ease);
+}
+
+.studio-collage:hover .block-b img {
+  transform: scale(1.12);
+}
+
+.block-c {
+  width: 34%;
+  height: 34%;
+  top: 48%;
+  left: 46%;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--surface) 0,
+    var(--surface) 10px,
+    var(--accent-light) 10px,
+    var(--accent-light) 20px
+  );
+  z-index: 1;
+  border: 2px solid var(--primary);
+}
+
+.studio-collage:hover .block-a {
+  transform: translateY(-10px) rotate(-2deg);
+}
+
+.studio-collage:hover .block-b {
+  transform: translateY(-6px) rotate(3deg);
+}
+
+.collage-stamp {
+  position: absolute;
+  bottom: 8%;
+  left: 4%;
+  z-index: 4;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--text);
+  border: 2px solid var(--text);
+  border-radius: 50%;
+  width: 104px;
+  height: 104px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: var(--background);
+  transform: rotate(-12deg);
+  animation: stamp-float 5s ease-in-out infinite;
+}
+
+@keyframes stamp-float {
+  0%, 100% { transform: rotate(-12deg) translateY(0); }
+  50% { transform: rotate(-8deg) translateY(-8px); }
+}
+
+.studio-side {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.studio-title {
+  font-family: var(--font-black);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 1.2rem 0 1.4rem;
+}
+
+.studio-copy {
+  color: var(--muted);
+  max-width: 460px;
+}
+
+.studio-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+}
+
+.studio-stats li {
+  border-top: 2px solid var(--primary);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition);
+}
+
+.studio-stats li:hover {
+  border-top-color: var(--accent);
+}
+
+.studio-stats strong {
+  font-family: var(--font-black);
+  font-size: 2.2rem;
+  color: var(--accent);
+}
+
+.studio-stats span {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 900px) {
+  .studio-grid {
+    grid-template-columns: 1fr;
+  }
+  .studio-collage {
+    max-width: 100%;
+  }
+  .studio-stats {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .studio-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .block-a {
+    font-size: 4.5rem;
+  }
+}

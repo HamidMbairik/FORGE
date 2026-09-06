@@ -20,3 +20,51 @@
 - Black and off-white should dominate.
 - Orange should be bold and intentional—use it for interactive elements, hover states, CTAs and creative visual moments.
 - **60%** Background/neutral · **30%** Primary/Secondary · **10%** Accent.
+
+## Stack
+
+Built with **React (Vite)**. No UI framework — everything is hand-crafted CSS with an experimental, editorial feel.
+
+## Getting Started
+
+```bash
+npm install
+npm run dev      # start dev server
+npm run build    # production build → dist/
+npm run lint     # oxlint
+```
+
+> Live URL: http://localhost:5173
+
+## Brand Mark
+
+The FORGE emblem is an "F" being forged over a rising flame on a dark hearth — fire, force and typography in one mark. It lives as an animated SVG component (`src/components/Logo.jsx`), used in the nav, footer and favicon. On hover the flame flickers, glows and throws sparks.
+
+## Structure
+
+```
+├── index.html              # entry + fonts (Space Grotesk, Inter, Archivo Black)
+├── public/
+│   ├── favicon.svg         # FORGE logo mark
+│   └── images/             # real project + studio photography
+└── src/
+    ├── main.jsx            # React root
+    ├── App.jsx             # page assembly (loader, cursor, nav, sections)
+    ├── index.css           # design-token system + global styles
+    ├── styles/             # per-component CSS
+    ├── components/         # Navbar, Hero, Work, Services, Studio, Contact, Footer, Loader, Logo
+    ├── hooks/              # useReveal (scroll animations), useMouseTrail (custom cursor)
+    └── data/content.js     # projects (with imagery), services, nav links, stats
+```
+
+## Design & Interactions
+
+- Custom cursor (dot + trailing ring with mix-blend-mode)
+- Film-grain overlay + letterpress-style poster text
+- Intro loader with per-letter reveal (orange "O" as the forge flame)
+- Mouse-reactive 3D headline (`perspective` tilt)
+- Rotating orbital core with animated stamp (BOLD / EXPERIMENTAL / CREATIVE / UNCONVENTIONAL)
+- Tilt-on-hover work tiles over real photography, with live duotone preview rail
+- Services accordion with spring-reveal body
+- Sticky section titles, manifesto marquees, halftone/dotted textures
+- Fully responsive + `prefers-reduced-motion` respected
