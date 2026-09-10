@@ -56,3 +56,8 @@ Defined once as CSS variables in `src/index.css` and referenced everywhere. No s
 - The custom cursor is `mix-blend-mode: difference` and hides itself on touch devices, but won't match your OS cursor size — some people find that annoying.
 - Privacy: `dist/` is gitignored, so no build output is under version control.
 - The contact form / social links go nowhere real yet — the mailto is the only live action.
+
+
+---
+
+**Built from scratch by [Hamid Mbairik](https://github.com/HamidMbairik) · [CorgaDev](https://corgadev.vercel.app) — custom websites, no templates.**
